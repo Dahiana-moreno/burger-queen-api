@@ -3,8 +3,8 @@ import * as authCtrl from '../controllers/auth.controller';
 
 const router = Router();
 
-router.post('/', authCtrl.signUp);
+router.post('/signup', authCtrl.signUp);
 
-// router.post('/signin', authCtrl.signIn);
+router.post('/signin', authCtrl.signIn);
 
 export default router;

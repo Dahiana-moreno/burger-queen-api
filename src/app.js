@@ -20,6 +20,6 @@ app.get('/', (req, res) => {
   });
 });
 app.use('/products', productsRoutes);
-app.use('/login', authRoutes);
+app.use('/auth', authRoutes);
 
 export default app;

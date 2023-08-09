@@ -4,12 +4,13 @@ import config from '../config.js';
 
 export const signUp = async (req, res) => {
   const {
-    email, password, roles,
+    username, email, password, roles,
   } = req.body;
   console.log(req.body);
   // eslint-disable-next-line new-cap
   const newUser = new user(
     {
+      username,
       email,
       password: await user.encryptPassword(password),
     },
