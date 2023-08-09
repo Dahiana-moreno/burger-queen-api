@@ -4,10 +4,10 @@ import bcrypt from 'bcryptjs';
 const userSchema = new Schema(
   {
     // name: String,
-    username: {
-      type: String,
-      unique: true,
-    },
+    // username: {
+    /// type: String,
+    //  unique: true,
+    // },
     email: {
       type: String,
       unique: true,
