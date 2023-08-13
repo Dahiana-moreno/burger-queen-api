@@ -2,15 +2,14 @@ import { Router } from 'express'; // router de express
 import * as ordersCtrl from '../controllers/orders.controller';
 
 const router = Router();
+router.post('/', ordersCtrl.createOrder);
 
 router.get('/', ordersCtrl.getOrders);
 
-router.get('/:productId', ordersCtrl.getcreateOrderById);
+router.get('/:orderId', ordersCtrl.getcreateOrderById);
 
-router.post('/', ordersCtrl.createOrder);
+router.patch('/:orderId', ordersCtrl.updateOrderById);
 
-router.put('/:productId', ordersCtrl.updateOrderById);
-
-router.delete('/:productId', ordersCtrl.deleteOrderById);
+router.delete('/:orderId', ordersCtrl.deleteOrderById);
 
 export default router;

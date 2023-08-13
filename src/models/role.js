@@ -12,4 +12,4 @@ const roleSchema = new Schema(
 
 /* {name: "admin", _id: "1qagghety37"}
 {name: "mesero", _id: "368638hehje"} */
-export default model('Role', roleSchema);
+export default model('role', roleSchema);

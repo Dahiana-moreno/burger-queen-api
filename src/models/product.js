@@ -6,10 +6,11 @@ const productShema = new Schema(
     price: Number,
     imgURL: String,
     type: String,
+    dateEntry: { type: Date, default: Date.now },
 
   },
   {
-    timestamps: true, // hora acualizacion del cambio.
+  //  timestamps: true, // hora acualizacion del cambio.
     versionKey: false,
 
   },

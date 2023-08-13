@@ -3,14 +3,14 @@ import * as usersCtrl from '../controllers/users.controller';
 
 const router = Router();
 
-router.get('/', usersCtrl.getUsers);
-
-router.get('/:productId', usersCtrl.getUserById);
-
 router.post('/', usersCtrl.createUser);
 
-router.put('/:productId', usersCtrl.updateUserById);
+router.get('/', usersCtrl.getUsers);
 
-router.delete('/:productId', usersCtrl.deleteUserById);
+// router.get('/:usersId', usersCtrl.getUserById);
+
+// router.put('/:usersId', usersCtrl.updateUserById);
+
+// router.delete('/:usersId', usersCtrl.deleteUserById);
 
 export default router;

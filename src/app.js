@@ -2,10 +2,14 @@
 import express from 'express';
 import morgan from 'morgan';
 import pkg from '../package.json'; // leer archivo json
+import { createRoles } from './libs/initialSetup';
 import productsRoutes from './routes/products.routes';
-import authRoutes from './routes/aut.routes';
+import authRoutes from './routes/auth.routes';
+import usersRoutes from './routes/users.routes';
+// import usersRoutes from './routes/users.routes';
 
 const app = express();
+createRoles();
 
 app.set('pkg', pkg); // colocar nombre y valor en exprees  guardar yluego obtener
 app.use(morgan('dev'));
@@ -19,7 +23,10 @@ app.get('/', (req, res) => {
 
   });
 });
-app.use('/products', productsRoutes);
 app.use('/login', authRoutes);
+app.use('/products', productsRoutes);
+app.use('/users', usersRoutes);
+
+// app.use('/users', usersRoutes);
 
 export default app;
