@@ -34,7 +34,6 @@ export const createUser = async (req, res) => {
   res.status(200).json({ token });
   //  console.log(newUser);
   console.log(token);
-  console.log('hola');
 };
 
 export const getUsers = async (req, res) => {
