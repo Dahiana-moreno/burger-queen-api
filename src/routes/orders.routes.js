@@ -1,15 +1,16 @@
 import { Router } from 'express'; // router de express
 import * as ordersCtrl from '../controllers/orders.controller';
+import { verifyToken } from '../middlewares/authJwt';
 
 const router = Router();
-router.post('/', ordersCtrl.createOrder);
+router.post('/', verifyToken, ordersCtrl.createOrder);
 
-router.get('/', ordersCtrl.getOrders);
+router.get('/', verifyToken, ordersCtrl.getOrders);
 
-router.get('/:orderId', ordersCtrl.getcreateOrderById);
+router.get('/:orderId', verifyToken, ordersCtrl.getcreateOrderById);
 
-router.patch('/:orderId', ordersCtrl.updateOrderById);
+router.patch('/:orderId', verifyToken, ordersCtrl.updateOrderById);
 
-router.delete('/:orderId', ordersCtrl.deleteOrderById);
+router.delete('/:orderId', verifyToken, ordersCtrl.deleteOrderById);
 
 export default router;

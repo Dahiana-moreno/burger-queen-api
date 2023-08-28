@@ -5,6 +5,6 @@ const router = Router();
 
 router.post('/', authCtrl.login);
 
-// router.post('/signin', authCtrl.signIn);
+router.get('/', authCtrl.isAdmin);
 
 export default router;

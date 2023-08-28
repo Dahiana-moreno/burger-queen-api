@@ -7,10 +7,10 @@ router.post('/', usersCtrl.createUser);
 
 router.get('/', usersCtrl.getUsers);
 
-// router.get('/:usersId', usersCtrl.getUserById);
+router.get('/:usersId', usersCtrl.getUsersById);
 
-// router.put('/:usersId', usersCtrl.updateUserById);
+router.patch('/:usersId', usersCtrl.updateUsersById);
 
-// router.delete('/:usersId', usersCtrl.deleteUserById);
+router.delete('/:usersId', usersCtrl.deleteUsersById);
 
 export default router;
