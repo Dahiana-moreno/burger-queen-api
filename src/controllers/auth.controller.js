@@ -41,7 +41,7 @@ export const login = async (req, res) => {
   // console.log(newLoginn);
   // console.log(token);
   } catch (error) {
-    console.error('Error en el inicio de sesión:', error);
+    // console.error('Error en el inicio de sesión:', error);
     return res.status(500).json({ error: 'Error en el inicio de sesión' });
   }
 };
