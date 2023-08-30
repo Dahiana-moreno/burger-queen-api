@@ -28,19 +28,11 @@ export const login = async (req, res) => {
       console.log('hola soy tu login');
     } else {
       // Si el usuario existe, verificamos si la contraseña coincide
-    //  return res.status(403).json({ error: 'Ya existe un usuario con este correo electrónico' });
       const passwordMatch = await loginn.comparePassword(password, user.password);
       if (passwordMatch) {
         return res.status(401).json({ error: 'Credenciales de password no coinciden' });
       }
     }
-
-    //  const passwordMatch = await loginn.comparePassword(password, user.password);
-
-    /*   if (passwordMatch) {
-      return res.status(401).json({ error: 'Credenciales de password no coinciden' });
-    } */
-
     // eslint-disable-next-line no-underscore-dangle
     const token = jwt.sign({ id: user._id }, config.SECRET, {
       expiresIn: 86400, // 24 horas
@@ -66,5 +58,4 @@ export const isAdmin = async (req, res) => {
     console.error('Error en verificación de rol de administrador:', error);
     return res.status(500).json({ error: 'Error interno del servidor' });
   }
-  //  res.json('signin');
 };

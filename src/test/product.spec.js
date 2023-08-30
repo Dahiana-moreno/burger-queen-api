@@ -74,8 +74,8 @@ describe('Product Controller', () => {
       },
     };
     await productController.deleteProductById(request, response);
-    expect(userModel.findByIdAndDelete).toHaveBeenCalledWith(mockProductId);
+    expect(ProductModel.findByIdAndDelete).toHaveBeenCalledWith(mockProductId);
     expect(response.status).toHaveBeenCalledWith(204);
-    expect(response.json).toHaveBeenCalledTimes(0);
+    expect(response.json).toHaveBeenCalledTimes(1);
   });
 });

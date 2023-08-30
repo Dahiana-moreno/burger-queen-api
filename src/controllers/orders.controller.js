@@ -1,9 +1,7 @@
 import order from '../models/order';
-// import { verifyToken } from '../middlewares/authJwt';
 
 export const createOrder = async (req, res) => {
   const {
-    // userId, // status, dateEntry, dateProcessed,
     client, products, status,
   } = req.body;
   try {
@@ -12,7 +10,6 @@ export const createOrder = async (req, res) => {
     const newOrder = new order(
       {
         userId, client, products, status,
-      //  status, dateEntry, dateProcessed,
       },
     );
     const orderSaved = await newOrder.save();

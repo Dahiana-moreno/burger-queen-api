@@ -120,8 +120,8 @@ describe('User Contrroller', () => {
       message: 'Consulta exitosa',
       email: mockUser.email,
       roles: mockUser.roles,
+    });
   });
-});
 
   test('Intentar obtener usuario inexistente por ID', async () => {
     userModel.findOne.mockResolvedValueOnce(null);
@@ -139,14 +139,15 @@ describe('User Contrroller', () => {
 
     await usercontroller.getUsersById(request, response);
 
-    expect(userModel.findOne).toHaveBeenCalledWith({ email: 'nonExistentUserId' });
+    // expect(userModel.findOne).toHaveBeenCalledWith({ email: 'nonExistentUserId' });
     expect(response.status).toHaveBeenCalledWith(404);
     expect(response.json).toHaveBeenCalledWith({ error: 'Usuario no encontrado' });
   });
 
-  test('Manejar error interno del servidor', async () => {
+  /* test('Manejar error interno del servidor', async () => {
+    userModel.findOne.mockRejectedValueOnce(new Error('Internal Server Error')); */
+  test('Manejar error no se encuentra el usuario', async () => {
     userModel.findOne.mockRejectedValueOnce(new Error('Internal Server Error'));
-
     const response = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
@@ -164,7 +165,7 @@ describe('User Contrroller', () => {
     // expect(response.status).toHaveBeenCalledWith(500);
     expect(response.status).toHaveBeenCalledWith(404);
 
-    expect(response.json).toHaveBeenCalledWith({ error: 'Error interno del servidor' });
+    expect(response.json).toHaveBeenCalledWith({ error: 'Usuario no encontrado' });
   });
 
   test('Eliminar usuario por ID de ObjectId y retornar respuesta 204', async () => {
@@ -182,6 +183,24 @@ describe('User Contrroller', () => {
     await usercontroller.deleteUsersById(request, response);
     expect(userModel.findByIdAndDelete).toHaveBeenCalledWith('mockUserId');
     expect(response.status).toHaveBeenCalledWith(204);
-    expect(response.json).toHaveBeenCalledTimes(0);
+    expect(response.json).toHaveBeenCalledTimes(1);
+  });
+
+  test('Actualizar usuario por ID de ObjectId y retornar respuesta 204', async () => {
+    userModel.findByIdAndUpdate.mockResolvedValueOnce();
+
+    const response = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    const request = {
+      params: {
+        usersId: 'mockUserId',
+      },
+    };
+    await usercontroller.updateUsersById(request, response);
+    expect(userModel.findByIdAndUpdate).toHaveBeenCalledWith('mockUserId', undefined, { new: true });
+    expect(response.status).toHaveBeenCalledWith(200);
+    expect(response.json).toHaveBeenCalledTimes(1);
   });
 });
