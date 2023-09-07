@@ -1,5 +1,10 @@
+import dotenv from 'dotenv';
 import app from './app';
 import './database';
 
-app.listen(8080);
-console.log('Server listen on port', 8080);
+dotenv.config();
+
+const port = process.env.PORT || 8080;
+
+app.listen(port);
+console.log(`Server listen on port ${port}`);
