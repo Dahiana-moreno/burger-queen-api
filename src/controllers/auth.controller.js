@@ -45,6 +45,7 @@ export const login = async (req, res) => {
     return res.status(500).json({ error: 'Error en el inicio de sesión' });
   }
 };
+
 // eslint-disable-next-line consistent-return
 export const isAdmin = async (req, res) => {
   try {

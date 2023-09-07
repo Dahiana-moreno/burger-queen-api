@@ -1,6 +1,6 @@
 import { Router } from 'express'; // router de express
 import * as productsCtrl from '../controllers/products.controller';
-import { verifyToken } from '../middlewares';
+import { verifyToken } from '../middlewares/authJwt';
 
 const router = Router();
 router.post('/', verifyToken, productsCtrl.createProduct);

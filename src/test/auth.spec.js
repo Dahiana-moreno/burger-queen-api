@@ -2,7 +2,6 @@
 import jwt from 'jsonwebtoken';
 import { login, isAdmin } from '../controllers/auth.controller';
 import authModel from '../models/auth';
-import config from '../config';
 
 jest.mock('../models/auth', () => ({
   findOne: jest.fn(),

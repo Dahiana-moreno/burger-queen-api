@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.js --exec babel-node",
     "start": "node build/index.js",
     "test": "jest",
-    "test:e2e": "jest --coverage"
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "July Dayana Becerra",
@@ -21,7 +21,8 @@
     "express": "^4.18.2",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.1",
-    "mongoose": "^7.4.1",
+    "mongodb": "^6.0.0",
+    "mongoose": "^7.5.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
